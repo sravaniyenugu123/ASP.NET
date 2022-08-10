@@ -87,17 +87,17 @@ stages:
         WebAppName: '$(WEBAPPNAME)'
         packageForLinux: '$(System.DefaultWorkingDirectory)/**/*.zip'
 
-- task: AzureAppServiceSettings@1
-  inputs:
-    azureSubscription: 'sravaniMSDN'
-    appName: '$(WEBAPPNAME)'
-    resourceGroupName: '$(RESOURCEGROUPNAME)'
-    connectionStrings: |
-      [
-         {
-          "name": "MyDbConnection",
-          "value": "Server=tcp:$(SQLSRVNAME).database.windows.net,1433;Initial Catalog=tododb;Persist Security Info=False;User ID=$(USERNAME);Password=$(PASSWORD);MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
-          "type": "SqlAzure",
-          "slotSetting": false
-         }
-      ]
+    - task: AzureAppServiceSettings@1
+         inputs:
+        azureSubscription: 'sravaniMSDN'
+        appName: '$(WEBAPPNAME)'
+        resourceGroupName: '$(RESOURCEGROUPNAME)'
+        connectionStrings: |
+          [
+            {
+              "name": "MyDbConnection",
+              "value": "Server=tcp:$(SQLSRVNAME).database.windows.net,1433;Initial Catalog=tododb;Persist Security Info=False;User ID=$(USERNAME);Password=$(PASSWORD);MultipleActiveResultSets=False;Encrypt=True;TrustServerCertificate=False;Connection Timeout=30;",
+              "type": "SqlAzure",
+              "slotSetting": false
+            }
+          ]
